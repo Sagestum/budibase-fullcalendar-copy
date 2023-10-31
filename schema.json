@@ -2,9 +2,9 @@
   "type": "component",
   "metadata": {},
   "schema": {
-    "name": "budibase-fullcalendar",
-    "friendlyName": "FullCalendar",
-    "description": "simple calendar component for budibase",
+    "name": "budibase-fullcalendar-copy",
+    "friendlyName": "FullCalendarC",
+    "description": "simple calendar component for budibase, by Christian",
     "icon": "Calendar",
     "settings": [
       {
@@ -128,6 +128,7 @@
               "en",
               "fr",
               "es",
+	      "de",
               "ru"
             ],
             "label": "language",
