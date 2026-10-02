@@ -1,22 +1,23 @@
 <script>
-  
-  import { getContext } from "svelte"	
-  import '@fullcalendar/core/locales-all'
-  import FullCalendar from 'svelte-fullcalendar';
-  import daygridPlugin from '@fullcalendar/daygrid';
-  import timeGridPlugin from '@fullcalendar/timegrid';
-  import listPlugin from '@fullcalendar/list';
-  import { onMount } from "svelte";
-  import {langs, codeLang} from "./lang"
- 
+  import { getContext, onMount } from "svelte"
+  import { Calendar } from "fullcalendar"
+  import dayGridPlugin from "fullcalendar/daygrid"
+  import timeGridPlugin from "fullcalendar/timegrid"
+  import listPlugin from "fullcalendar/list"
+  import classicThemePlugin from "fullcalendar/themes/classic"
+  import allLocales from "fullcalendar/locales-all"
+  import "fullcalendar/skeleton.css"
+  import "fullcalendar/themes/classic/theme.css"
+  import "fullcalendar/themes/classic/palette.css"
+
   export let language
   export let calendarEvent
-  
+
   export let mappingTitle
   export let mappingDate
   export let mappingStart
   export let mappingEnd
- 
+
   export let mappingTitle2
   export let mappingDate2
   export let mappingStart2
@@ -30,59 +31,72 @@
 
   export let allday
   export let allday2
-  
+
   export let headerOptionsStart
   export let headerOptionsCenter
   export let headerOptionsEnd
 
-  let eventsList = []
-  onMount(()=>{
-    
-    if(eventsList.length > 0){
-      eventsList = []
-    }
-    if(dataProvider.rows){
-      dataProvider.rows.forEach(event => {
-        let eventColor = mappingColor ?? '#313131'           
-        eventsList.push({ title: event[mappingTitle], date: event[mappingDate], start: event[mappingStart], end: event[mappingEnd], color: eventColor, event: event, allDay: allday   })        
-      });
-    }
-    if(dataProvider2.rows){
-      dataProvider2.rows.forEach(event => {
-        let eventColor2 = mappingColor2 ?? '#eb4034' 
-        eventsList.push({ title: event[mappingTitle2], date: event[mappingDate2], start: event[mappingStart2], end: event[mappingEnd2], color: eventColor2, event: event, allDay: allday2  })
-      });
-    }
-    eventsList = eventsList
-  })
+  const { styleable } = getContext("sdk")
+  const component = getContext("component")
 
-  let options  = {
+  let calendarEl
+  let calendar
+
+  const toEvents = (rows, title, date, start, end, color, allDay) =>
+    (rows ?? []).map(row => ({
+      title: row[title],
+      start: row[start] ?? row[date],
+      end: row[end],
+      color,
+      // Only force all-day when enabled, otherwise let FullCalendar infer it
+      // from the value (date-only vs. date with time)
+      ...(allDay ? { allDay: true } : {}),
+      event: row,
+    }))
+
+  $: events = [
+    ...toEvents(dataProvider?.rows, mappingTitle, mappingDate, mappingStart, mappingEnd, mappingColor ?? "#313131", allday),
+    ...toEvents(dataProvider2?.rows, mappingTitle2, mappingDate2, mappingStart2, mappingEnd2, mappingColor2 ?? "#eb4034", allday2),
+  ]
+
+  // Events are served through a stable function source and refetched when the
+  // data changes, so new rows don't require re-applying all calendar options
+  let currentEvents = []
+  const fetchEvents = (info, success) => success(currentEvents)
+  $: {
+    currentEvents = events
+    calendar?.refetchEvents()
+  }
+
+  $: options = {
+    plugins: [dayGridPlugin, listPlugin, timeGridPlugin, classicThemePlugin],
     headerToolbar: {
       start: headerOptionsStart,
       center: headerOptionsCenter,
-      end: headerOptionsEnd
+      end: headerOptionsEnd,
     },
-    plugins: [daygridPlugin, listPlugin, timeGridPlugin],
-    initialDate:  Date.now(),
+    locales: allLocales,
     locale: language,
     dayMaxEvents: true,
-    eventClick: (event)=>{
-      calendarEvent({
-        value: event.event
+    eventClick: info => {
+      calendarEvent?.({
+        value: info.event,
       })
-      console.log(JSON.parse(text))
-      console.log(event.event.title)
     },
-    events:eventsList,
-    eventColor: '#378006',
-    theme: true,
-    ...langs[codeLang(language)]
+    events: fetchEvents,
+    eventColor: "#378006",
   }
-  const { styleable } = getContext("sdk") 
-  const component = getContext("component")
 
+  // Keep the calendar in sync when settings change
+  $: calendar?.resetOptions(options)
+
+  onMount(() => {
+    calendar = new Calendar(calendarEl, options)
+    calendar.render()
+    return () => calendar.destroy()
+  })
 </script>
 
 <div use:styleable={$component.styles}>
-  <FullCalendar {options} />
+  <div bind:this={calendarEl}></div>
 </div>

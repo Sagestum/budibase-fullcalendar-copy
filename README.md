@@ -1,14 +1,19 @@
-# BudiBase FullCalendar
+# BudiBase FullCalendar7
 
-https://github.com/pixelinfinito/budibase-fullcalendar/assets/54587190/47821c7e-454a-4e49-b7b8-c01ecde07c6e
+Fork of [pixelinfinito/budibase-fullcalendar](https://github.com/pixelinfinito/budibase-fullcalendar),
+updated to [FullCalendar](https://fullcalendar.io) 7 and to Budibase's Svelte 5 plugin format.
 
 ## Description
 It's a component to implement fullcalendar in your budibase.
 
+## Requirements
+A Budibase version that runs Svelte 5 plugins (`schema.metadata.svelteMajor: 5`).
+Older Budibase versions need the 1.x releases of this plugin.
+
 ## Installation
 To install the plugin for Budibase, follow these steps:
 
-1. Copy the repository link ```https://github.com/pixelinfinito/budibase-fullcalendar.git```.
+1. Copy the repository link ```https://github.com/Sagestum/budibase-fullcalendar-copy.git```.
 2. Open Budibase and navigate to the "Plugins" section.
 3. Click add plugin.
 4. Select GitHub source.

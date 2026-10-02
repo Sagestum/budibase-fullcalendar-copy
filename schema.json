@@ -1,10 +1,12 @@
 {
   "type": "component",
-  "metadata": {},
+  "metadata": {
+    "svelteMajor": 5
+  },
   "schema": {
     "name": "budibase-fullcalendar-copy",
-    "friendlyName": "FullCalendarC",
-    "description": "simple calendar component for budibase, by Christian",
+    "friendlyName": "FullCalendar7",
+    "description": "FullCalendar 7 calendar component for budibase, by Christian",
     "icon": "Calendar",
     "settings": [
       {
@@ -124,15 +126,15 @@
             "type": "select",
             "key": "language",
             "options": [
-              "pt",
+              "de",
               "en",
               "fr",
               "es",
-	      "de",
+              "pt",
               "ru"
             ],
             "label": "language",
-            "defaultValue": "pt"
+            "defaultValue": "de"
           },
           {
             "type": "event",
