@@ -13,28 +13,14 @@
   export let language
   export let calendarEvent
 
-  export let mappingTitle
-  export let mappingDate
-  export let mappingStart
-  export let mappingEnd
-
-  export let mappingTitle2
-  export let mappingDate2
-  export let mappingStart2
-  export let mappingEnd2
-
-  export let dataProvider
-  export let dataProvider2
-
-  export let mappingColor
-  export let mappingColor2
-
-  export let allday
-  export let allday2
-
   export let headerOptionsStart
   export let headerOptionsCenter
   export let headerOptionsEnd
+
+  // Event group settings (dataProvider, mappingTitle, ...) are read from
+  // $$props: group 1 has no suffix, group n uses the suffix n
+  const MAX_GROUPS = 6
+  const DEFAULT_COLORS = ["#313131", "#eb4034", "#2e7d32", "#ef6c00", "#6a1b9a", "#00838f"]
 
   const { styleable } = getContext("sdk")
   const component = getContext("component")
@@ -42,22 +28,29 @@
   let calendarEl
   let calendar
 
-  const toEvents = (rows, title, date, start, end, color, allDay) =>
-    (rows ?? []).map(row => ({
-      title: row[title],
-      start: row[start] ?? row[date],
-      end: row[end],
+  const groupEvents = (props, group) => {
+    const suffix = group === 1 ? "" : group
+    const setting = key => props[`${key}${suffix}`]
+    const rows = setting("dataProvider")?.rows ?? []
+    const color = setting("mappingColor") ?? DEFAULT_COLORS[group - 1]
+    return rows.map(row => ({
+      title: row[setting("mappingTitle")],
+      start: row[setting("mappingStart")] ?? row[setting("mappingDate")],
+      end: row[setting("mappingEnd")],
       color,
       // Only force all-day when enabled, otherwise let FullCalendar infer it
       // from the value (date-only vs. date with time)
-      ...(allDay ? { allDay: true } : {}),
+      ...(setting("allday") ? { allDay: true } : {}),
       event: row,
     }))
+  }
 
-  $: events = [
-    ...toEvents(dataProvider?.rows, mappingTitle, mappingDate, mappingStart, mappingEnd, mappingColor ?? "#313131", allday),
-    ...toEvents(dataProvider2?.rows, mappingTitle2, mappingDate2, mappingStart2, mappingEnd2, mappingColor2 ?? "#eb4034", allday2),
-  ]
+  // Components saved before the group count setting existed have no value,
+  // so they keep rendering every configured group
+  $: groupCount = Math.min(parseInt($$props.groupCount) || MAX_GROUPS, MAX_GROUPS)
+  $: events = Array.from({ length: groupCount }, (_, i) =>
+    groupEvents($$props, i + 1)
+  ).flat()
 
   // Events are served through a stable function source and refetched when the
   // data changes, so new rows don't require re-applying all calendar options

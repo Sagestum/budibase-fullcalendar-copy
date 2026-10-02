@@ -26,7 +26,7 @@ To install the plugin for Budibase, follow these steps:
 
 After installing the plugin for Budibase, you can start using it in your application. 
 The plugin adds full calendar and functionality to the platform, allowing you to further customize your application.
-You can use up to two data sources, the first source is mandatory. You can differentiate the two data sources in the calendar by changing the colors.
+You can use up to six data sources ("Event groups"), the first source is mandatory. Choose how many you need with the "Event groups" setting; only that many "Event Group" sections are shown and rendered. You can differentiate the data sources in the calendar by changing the colors.
 
 1. First add a data source <p><img src="src/images/usage/2.png" /></p>
 2. Add the calendar component inside the data source, you can search for FullCalendar <p><img src="src/images/usage/3.png" /></p>

@@ -10,6 +10,20 @@
     "icon": "Calendar",
     "settings": [
       {
+        "type": "select",
+        "key": "groupCount",
+        "label": "Event groups",
+        "options": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "defaultValue": "2"
+      },
+      {
         "section": true,
         "name": "Event Group 1",
         "settings": [
@@ -93,7 +107,224 @@
             "key": "mappingColor2",
             "defaultValue": "#000"
           }
-        ]
+        ],
+        "dependsOn": {
+          "setting": "groupCount",
+          "value": [
+            "1"
+          ],
+          "invert": true
+        }
+      },
+      {
+        "section": true,
+        "name": "Event Group 3",
+        "settings": [
+          {
+            "type": "dataProvider",
+            "label": "DataProvider",
+            "key": "dataProvider3",
+            "required": false
+          },
+          {
+            "type": "text",
+            "key": "mappingTitle3",
+            "label": "Title Mapping"
+          },
+          {
+            "type": "text",
+            "key": "mappingDate3",
+            "label": "Date Mapping"
+          },
+          {
+            "type": "text",
+            "key": "mappingStart3",
+            "label": "Start Mapping"
+          },
+          {
+            "type": "text",
+            "key": "mappingEnd3",
+            "label": "End Mapping"
+          },
+          {
+            "type": "boolean",
+            "key": "allday3",
+            "label": "AllDay Mapping"
+          },
+          {
+            "type": "color",
+            "label": "Color Mapping",
+            "key": "mappingColor3",
+            "defaultValue": "#2e7d32"
+          }
+        ],
+        "dependsOn": {
+          "setting": "groupCount",
+          "value": [
+            "1",
+            "2"
+          ],
+          "invert": true
+        }
+      },
+      {
+        "section": true,
+        "name": "Event Group 4",
+        "settings": [
+          {
+            "type": "dataProvider",
+            "label": "DataProvider",
+            "key": "dataProvider4",
+            "required": false
+          },
+          {
+            "type": "text",
+            "key": "mappingTitle4",
+            "label": "Title Mapping"
+          },
+          {
+            "type": "text",
+            "key": "mappingDate4",
+            "label": "Date Mapping"
+          },
+          {
+            "type": "text",
+            "key": "mappingStart4",
+            "label": "Start Mapping"
+          },
+          {
+            "type": "text",
+            "key": "mappingEnd4",
+            "label": "End Mapping"
+          },
+          {
+            "type": "boolean",
+            "key": "allday4",
+            "label": "AllDay Mapping"
+          },
+          {
+            "type": "color",
+            "label": "Color Mapping",
+            "key": "mappingColor4",
+            "defaultValue": "#ef6c00"
+          }
+        ],
+        "dependsOn": {
+          "setting": "groupCount",
+          "value": [
+            "1",
+            "2",
+            "3"
+          ],
+          "invert": true
+        }
+      },
+      {
+        "section": true,
+        "name": "Event Group 5",
+        "settings": [
+          {
+            "type": "dataProvider",
+            "label": "DataProvider",
+            "key": "dataProvider5",
+            "required": false
+          },
+          {
+            "type": "text",
+            "key": "mappingTitle5",
+            "label": "Title Mapping"
+          },
+          {
+            "type": "text",
+            "key": "mappingDate5",
+            "label": "Date Mapping"
+          },
+          {
+            "type": "text",
+            "key": "mappingStart5",
+            "label": "Start Mapping"
+          },
+          {
+            "type": "text",
+            "key": "mappingEnd5",
+            "label": "End Mapping"
+          },
+          {
+            "type": "boolean",
+            "key": "allday5",
+            "label": "AllDay Mapping"
+          },
+          {
+            "type": "color",
+            "label": "Color Mapping",
+            "key": "mappingColor5",
+            "defaultValue": "#6a1b9a"
+          }
+        ],
+        "dependsOn": {
+          "setting": "groupCount",
+          "value": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "invert": true
+        }
+      },
+      {
+        "section": true,
+        "name": "Event Group 6",
+        "settings": [
+          {
+            "type": "dataProvider",
+            "label": "DataProvider",
+            "key": "dataProvider6",
+            "required": false
+          },
+          {
+            "type": "text",
+            "key": "mappingTitle6",
+            "label": "Title Mapping"
+          },
+          {
+            "type": "text",
+            "key": "mappingDate6",
+            "label": "Date Mapping"
+          },
+          {
+            "type": "text",
+            "key": "mappingStart6",
+            "label": "Start Mapping"
+          },
+          {
+            "type": "text",
+            "key": "mappingEnd6",
+            "label": "End Mapping"
+          },
+          {
+            "type": "boolean",
+            "key": "allday6",
+            "label": "AllDay Mapping"
+          },
+          {
+            "type": "color",
+            "label": "Color Mapping",
+            "key": "mappingColor6",
+            "defaultValue": "#00838f"
+          }
+        ],
+        "dependsOn": {
+          "setting": "groupCount",
+          "value": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "invert": true
+        }
       },
       {
         "section": true,
