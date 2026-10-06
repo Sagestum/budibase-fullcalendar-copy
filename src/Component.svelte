@@ -17,6 +17,9 @@
   export let headerOptionsCenter
   export let headerOptionsEnd
 
+  export let weekendHighlight
+  export let weekendColor
+
   // Event group settings (dataProvider, mappingTitle, ...) are read from
   // $$props: group 1 has no suffix, group n uses the suffix n
   const MAX_GROUPS = 6
@@ -61,6 +64,10 @@
     calendar?.refetchEvents()
   }
 
+  // Marks Saturday and Sunday; today keeps the theme's own highlight
+  const weekendClass = info =>
+    (info.dow === 0 || info.dow === 6) && !info.isToday ? "fc7-weekend" : ""
+
   $: options = {
     plugins: [dayGridPlugin, listPlugin, timeGridPlugin, classicThemePlugin],
     headerToolbar: {
@@ -78,6 +85,13 @@
     },
     events: fetchEvents,
     eventColor: "#378006",
+    ...(weekendHighlight
+      ? {
+          dayHeaderClass: weekendClass,
+          dayCellClass: weekendClass,
+          dayLaneClass: weekendClass,
+        }
+      : {}),
   }
 
   // Keep the calendar in sync when settings change
@@ -91,5 +105,11 @@
 </script>
 
 <div use:styleable={$component.styles}>
-  <div bind:this={calendarEl}></div>
+  <div bind:this={calendarEl} style:--fc7-weekend={weekendColor || "#f2f2f2"}></div>
 </div>
+
+<style>
+  div :global(.fc7-weekend) {
+    background-color: var(--fc7-weekend);
+  }
+</style>

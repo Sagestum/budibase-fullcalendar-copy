@@ -27,6 +27,7 @@ To install the plugin for Budibase, follow these steps:
 After installing the plugin for Budibase, you can start using it in your application. 
 The plugin adds full calendar and functionality to the platform, allowing you to further customize your application.
 You can use up to six data sources ("Event groups"), the first source is mandatory. Choose how many you need with the "Event groups" setting; only that many "Event Group" sections are shown and rendered. You can differentiate the data sources in the calendar by changing the colors.
+Saturday and Sunday can be given their own background color: enable "Highlight weekend" in the "Weekend" section and pick a "Weekend Color".
 
 1. First add a data source <p><img src="src/images/usage/2.png" /></p>
 2. Add the calendar component inside the data source, you can search for FullCalendar <p><img src="src/images/usage/3.png" /></p>
@@ -38,6 +39,7 @@ You can use up to six data sources ("Event groups"), the first source is mandato
 2. Map data that appears in the calendar
 3. Group data by color
 4. Change language
+5. Highlight the weekend with its own color
 
 ## Available plugins
 1. DayGrid ([Month View](https://fullcalendar.io/docs/month-view), [DayGrid View](https://fullcalendar.io/docs/daygrid-view))

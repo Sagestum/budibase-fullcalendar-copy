@@ -352,6 +352,25 @@
       },
       {
         "section": true,
+        "name": "Weekend",
+        "settings": [
+          {
+            "type": "boolean",
+            "key": "weekendHighlight",
+            "label": "Highlight weekend",
+            "defaultValue": false
+          },
+          {
+            "type": "color",
+            "key": "weekendColor",
+            "label": "Weekend Color",
+            "defaultValue": "#f2f2f2",
+            "dependsOn": "weekendHighlight"
+          }
+        ]
+      },
+      {
+        "section": true,
         "settings": [
           {
             "type": "select",
