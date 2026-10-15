@@ -63,6 +63,48 @@
             "label": "Color Mapping",
             "key": "mappingColor",
             "defaultValue": "#272727"
+          },
+          {
+            "type": "text",
+            "key": "filterField",
+            "label": "Filter Column",
+            "info": "Optional: only rows whose value in this column matches the condition become events of this group."
+          },
+          {
+            "type": "select",
+            "key": "filterOperator",
+            "label": "Filter Condition",
+            "defaultValue": "oneOf",
+            "dependsOn": "filterField",
+            "options": [
+              {
+                "label": "Is one of",
+                "value": "oneOf"
+              },
+              {
+                "label": "Is not one of",
+                "value": "notOneOf"
+              },
+              {
+                "label": "Contains",
+                "value": "contains"
+              },
+              {
+                "label": "Is empty",
+                "value": "empty"
+              },
+              {
+                "label": "Is not empty",
+                "value": "notEmpty"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "key": "filterValues",
+            "label": "Filter Values",
+            "dependsOn": "filterField",
+            "info": "Several values separated by commas. Case is ignored."
           }
         ]
       },
@@ -106,6 +148,48 @@
             "label": "Color Mapping",
             "key": "mappingColor2",
             "defaultValue": "#000"
+          },
+          {
+            "type": "text",
+            "key": "filterField2",
+            "label": "Filter Column",
+            "info": "Optional: only rows whose value in this column matches the condition become events of this group."
+          },
+          {
+            "type": "select",
+            "key": "filterOperator2",
+            "label": "Filter Condition",
+            "defaultValue": "oneOf",
+            "dependsOn": "filterField2",
+            "options": [
+              {
+                "label": "Is one of",
+                "value": "oneOf"
+              },
+              {
+                "label": "Is not one of",
+                "value": "notOneOf"
+              },
+              {
+                "label": "Contains",
+                "value": "contains"
+              },
+              {
+                "label": "Is empty",
+                "value": "empty"
+              },
+              {
+                "label": "Is not empty",
+                "value": "notEmpty"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "key": "filterValues2",
+            "label": "Filter Values",
+            "dependsOn": "filterField2",
+            "info": "Several values separated by commas. Case is ignored."
           }
         ],
         "dependsOn": {
@@ -156,6 +240,48 @@
             "label": "Color Mapping",
             "key": "mappingColor3",
             "defaultValue": "#2e7d32"
+          },
+          {
+            "type": "text",
+            "key": "filterField3",
+            "label": "Filter Column",
+            "info": "Optional: only rows whose value in this column matches the condition become events of this group."
+          },
+          {
+            "type": "select",
+            "key": "filterOperator3",
+            "label": "Filter Condition",
+            "defaultValue": "oneOf",
+            "dependsOn": "filterField3",
+            "options": [
+              {
+                "label": "Is one of",
+                "value": "oneOf"
+              },
+              {
+                "label": "Is not one of",
+                "value": "notOneOf"
+              },
+              {
+                "label": "Contains",
+                "value": "contains"
+              },
+              {
+                "label": "Is empty",
+                "value": "empty"
+              },
+              {
+                "label": "Is not empty",
+                "value": "notEmpty"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "key": "filterValues3",
+            "label": "Filter Values",
+            "dependsOn": "filterField3",
+            "info": "Several values separated by commas. Case is ignored."
           }
         ],
         "dependsOn": {
@@ -207,6 +333,48 @@
             "label": "Color Mapping",
             "key": "mappingColor4",
             "defaultValue": "#ef6c00"
+          },
+          {
+            "type": "text",
+            "key": "filterField4",
+            "label": "Filter Column",
+            "info": "Optional: only rows whose value in this column matches the condition become events of this group."
+          },
+          {
+            "type": "select",
+            "key": "filterOperator4",
+            "label": "Filter Condition",
+            "defaultValue": "oneOf",
+            "dependsOn": "filterField4",
+            "options": [
+              {
+                "label": "Is one of",
+                "value": "oneOf"
+              },
+              {
+                "label": "Is not one of",
+                "value": "notOneOf"
+              },
+              {
+                "label": "Contains",
+                "value": "contains"
+              },
+              {
+                "label": "Is empty",
+                "value": "empty"
+              },
+              {
+                "label": "Is not empty",
+                "value": "notEmpty"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "key": "filterValues4",
+            "label": "Filter Values",
+            "dependsOn": "filterField4",
+            "info": "Several values separated by commas. Case is ignored."
           }
         ],
         "dependsOn": {
@@ -259,6 +427,48 @@
             "label": "Color Mapping",
             "key": "mappingColor5",
             "defaultValue": "#6a1b9a"
+          },
+          {
+            "type": "text",
+            "key": "filterField5",
+            "label": "Filter Column",
+            "info": "Optional: only rows whose value in this column matches the condition become events of this group."
+          },
+          {
+            "type": "select",
+            "key": "filterOperator5",
+            "label": "Filter Condition",
+            "defaultValue": "oneOf",
+            "dependsOn": "filterField5",
+            "options": [
+              {
+                "label": "Is one of",
+                "value": "oneOf"
+              },
+              {
+                "label": "Is not one of",
+                "value": "notOneOf"
+              },
+              {
+                "label": "Contains",
+                "value": "contains"
+              },
+              {
+                "label": "Is empty",
+                "value": "empty"
+              },
+              {
+                "label": "Is not empty",
+                "value": "notEmpty"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "key": "filterValues5",
+            "label": "Filter Values",
+            "dependsOn": "filterField5",
+            "info": "Several values separated by commas. Case is ignored."
           }
         ],
         "dependsOn": {
@@ -312,6 +522,48 @@
             "label": "Color Mapping",
             "key": "mappingColor6",
             "defaultValue": "#00838f"
+          },
+          {
+            "type": "text",
+            "key": "filterField6",
+            "label": "Filter Column",
+            "info": "Optional: only rows whose value in this column matches the condition become events of this group."
+          },
+          {
+            "type": "select",
+            "key": "filterOperator6",
+            "label": "Filter Condition",
+            "defaultValue": "oneOf",
+            "dependsOn": "filterField6",
+            "options": [
+              {
+                "label": "Is one of",
+                "value": "oneOf"
+              },
+              {
+                "label": "Is not one of",
+                "value": "notOneOf"
+              },
+              {
+                "label": "Contains",
+                "value": "contains"
+              },
+              {
+                "label": "Is empty",
+                "value": "empty"
+              },
+              {
+                "label": "Is not empty",
+                "value": "notEmpty"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "key": "filterValues6",
+            "label": "Filter Values",
+            "dependsOn": "filterField6",
+            "info": "Several values separated by commas. Case is ignored."
           }
         ],
         "dependsOn": {

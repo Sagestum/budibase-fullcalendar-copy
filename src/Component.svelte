@@ -31,10 +31,43 @@
   let calendarEl
   let calendar
 
+  const toText = value => (value == null ? "" : `${value}`.trim().toLowerCase())
+
+  // Optional per group filter, so several groups can share one data provider
+  const matchesFilter = (row, field, operator, values) => {
+    if (!field) {
+      return true
+    }
+    const text = toText(row[field])
+    const list = `${values ?? ""}`
+      .split(",")
+      .map(toText)
+      .filter(value => value !== "")
+    switch (operator) {
+      case "notOneOf":
+        return !list.includes(text)
+      case "contains":
+        return list.some(value => text.includes(value))
+      case "empty":
+        return text === ""
+      case "notEmpty":
+        return text !== ""
+      default:
+        return list.includes(text)
+    }
+  }
+
   const groupEvents = (props, group) => {
     const suffix = group === 1 ? "" : group
     const setting = key => props[`${key}${suffix}`]
-    const rows = setting("dataProvider")?.rows ?? []
+    const rows = (setting("dataProvider")?.rows ?? []).filter(row =>
+      matchesFilter(
+        row,
+        setting("filterField"),
+        setting("filterOperator"),
+        setting("filterValues")
+      )
+    )
     const color = setting("mappingColor") ?? DEFAULT_COLORS[group - 1]
     return rows.map(row => ({
       title: row[setting("mappingTitle")],

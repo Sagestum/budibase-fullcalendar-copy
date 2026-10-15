@@ -27,6 +27,7 @@ To install the plugin for Budibase, follow these steps:
 After installing the plugin for Budibase, you can start using it in your application. 
 The plugin adds full calendar and functionality to the platform, allowing you to further customize your application.
 You can use up to six data sources ("Event groups"), the first source is mandatory. Choose how many you need with the "Event groups" setting; only that many "Event Group" sections are shown and rendered. You can differentiate the data sources in the calendar by changing the colors.
+Each event group can filter the rows of its data provider ("Filter Column", "Filter Condition", "Filter Values"), so one data provider can feed several groups, e.g. holidays in one color and working times in another. "Is one of" and "Is not one of" take several values separated by commas, case is ignored.
 Saturday and Sunday can be given their own background color: enable "Highlight weekend" in the "Weekend" section and pick a "Weekend Color".
 
 1. First add a data source <p><img src="src/images/usage/2.png" /></p>
